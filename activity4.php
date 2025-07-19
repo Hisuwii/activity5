@@ -37,8 +37,38 @@ class CarRental{
     }
 }
 
+class LuxuryCarRental extends CarRental{
+    public $chauffeur;
+
+    public function __construct($renter, $zip, $sizeCar, $duration, $chauffeur){
+        CarRental::__construct($renter, $zip, $sizeCar, $duration);
+        $this->chauffeur = $chauffeur;
+
+        if($this->chauffeur == "yes"){
+            $this->chauffeur = 200;
+        }else{
+            $this->chauffeur = 0;
+        }
+    }
+
+      public function calculate(){
+        $this->totalFee = $this->dailyRental * $this->duration + $this->chauffeur;
+        echo "Total Fee is $".$this->totalFee;
+    }
+
+    function get_info(){
+        echo "Renter Name is: ". $this->renter."<br>";
+        echo "Renter Car Size is: ". $this->sizeCar."<br>";
+        echo "Renter Zip Code is: ". $this->zip."<br>";
+        echo "Renter Daily Rental is: $". $this->dailyRental."<br>";
+        echo "Renter Duration Days: ". $this->duration."<br>";
+        echo "Included Chauffeur? ". $this->chauffeur."<br>";
+    }
+
+}
+
 if(isset($_POST['submit'])){
-    $rent = new CarRental($_POST['renter'], $_POST['zip'], $_POST['sizeCar'], $_POST['days']);
+    $rent = new LuxuryCarRental($_POST['renter'], $_POST['zip'], $_POST['sizeCar'], $_POST['days'], $_POST['chauffeur']);
     $rent->get_info();
     $rent->calculate();
 
@@ -66,12 +96,12 @@ if(isset($_POST['submit'])){
         <option value="fullsize">Full Size</option>
     </select><br><br>
     <input type="number" name="days" placeholder="Enter Days to Rent"><br><br>
-    <!-- <label>Include Chaufeur?</label>
+    <label>Include Chaufeur?</label>
     <select name="chauffeur">
         <option>Select Option</option>
         <option value="yes">Yes</option>
         <option value="no">No</option>
-    </select><br><br> -->
+    </select><br><br>
     <button type="submit" name="submit">Submit</submit>
 </form>
 </body>
