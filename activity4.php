@@ -87,7 +87,9 @@ if(isset($_POST['submit'])){
 <body>
 
 <form method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
+    <label>Renter Name:</label>
     <input type="text" name="renter" placeholder="Enter Renter Name"><br><br>
+    <label>Zip Code</label>
     <input type="number" name="zip" placeholder="Enter Zip Code"><br><br>
     <label>Size of the Car:</label>
     <select name="sizeCar">
@@ -95,6 +97,7 @@ if(isset($_POST['submit'])){
         <option value="midsize">Mid Size</option>
         <option value="fullsize">Full Size</option>
     </select><br><br>
+    <label>Rent Duration</label>
     <input type="number" name="days" placeholder="Enter Days to Rent"><br><br>
     <label>Include Chaufeur?</label>
     <select name="chauffeur">
