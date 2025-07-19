@@ -41,7 +41,7 @@ class LuxuryCarRental extends CarRental{
     public $chauffeur;
 
     public function __construct($renter, $zip, $sizeCar, $duration, $chauffeur){
-        CarRental::__construct($renter, $zip, $sizeCar, $duration);
+        parent::__construct($renter, $zip, $sizeCar, $duration);
         $this->chauffeur = $chauffeur;
 
         if($this->chauffeur == "yes"){
