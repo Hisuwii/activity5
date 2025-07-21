@@ -44,6 +44,16 @@ class LuxuryCarRental extends CarRental{
         parent::__construct($renter, $zip, $sizeCar, $duration);
         $this->chauffeur = $chauffeur;
 
+         if($this->sizeCar == "economy"){
+            $this->dailyRental = 29.99;
+        }elseif($this->sizeCar == "midsize"){
+            $this->dailyRental = 38.99;
+        }elseif($this->sizeCar == "fullsize"){
+            $this->dailyRental = 43.50;
+        }elseif($this->sizeCar == "luxury"){
+            $this->dailyRental = 79.99;
+        }
+
         if($this->chauffeur == "yes"){
             $this->chauffeur = 200;
         }else{
@@ -96,6 +106,7 @@ if(isset($_POST['submit'])){
         <option value="economy">Economy</option>
         <option value="midsize">Mid Size</option>
         <option value="fullsize">Full Size</option>
+        <option value="luxury">Luxury Car</option>
     </select><br><br>
     <label>Rent Duration</label>
     <input type="number" name="days" placeholder="Enter Days to Rent"><br><br>
